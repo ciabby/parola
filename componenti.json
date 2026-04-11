@@ -1,0 +1,22 @@
+[
+  {"id": 1, "nomeComponente": "GeForce RTX 4090", "produttore": "NVIDIA", "prezzo": 1899.99, "watts": 450, "garanziaMesi": 24},
+  {"id": 2, "nomeComponente": "Ryzen 9 7950X", "produttore": "AMD", "prezzo": 599.90, "watts": 170, "garanziaMesi": 36},
+  {"id": 3, "nomeComponente": "Core i9-14900K", "produttore": "Intel", "prezzo": 620.00, "watts": 253, "garanziaMesi": 36},
+  {"id": 4, "nomeComponente": "Radeon RX 7900 XTX", "produttore": "AMD", "prezzo": 999.00, "watts": 355, "garanziaMesi": 24},
+  {"id": 5, "nomeComponente": "Corsair RM1000x", "produttore": "Corsair", "prezzo": 189.99, "watts": 1000, "garanziaMesi": 120},
+  {"id": 6, "nomeComponente": "Samsung 990 Pro 2TB", "produttore": "Samsung", "prezzo": 169.90, "watts": 8, "garanziaMesi": 60},
+  {"id": 7, "nomeComponente": "Vengeance RGB DDR5 32GB", "produttore": "Corsair", "prezzo": 135.00, "watts": 5, "garanziaMesi": 120},
+  {"id": 8, "nomeComponente": "ROG Crosshair X670E", "produttore": "ASUS", "prezzo": 499.00, "watts": 30, "garanziaMesi": 36},
+  {"id": 9, "nomeComponente": "Kraken Elite 360", "produttore": "NZXT", "prezzo": 279.99, "watts": 15, "garanziaMesi": 72},
+  {"id": 10, "nomeComponente": "GeForce RTX 4070 Ti", "produttore": "NVIDIA", "prezzo": 799.00, "watts": 285, "garanziaMesi": 24},
+  {"id": 11, "nomeComponente": "Ryzen 7 7800X3D", "produttore": "AMD", "prezzo": 399.00, "watts": 120, "garanziaMesi": 36},
+  {"id": 12, "nomeComponente": "Seasonic Focus GX-850", "produttore": "Seasonic", "prezzo": 139.90, "watts": 850, "garanziaMesi": 120},
+  {"id": 13, "nomeComponente": "WD Black SN850X 1TB", "produttore": "Western Digital", "prezzo": 99.00, "watts": 7, "garanziaMesi": 60},
+  {"id": 14, "nomeComponente": "Trident Z5 Neo RGB 64GB", "produttore": "G.Skill", "prezzo": 220.00, "watts": 6, "garanziaMesi": 120},
+  {"id": 15, "nomeComponente": "MAG B650 TOMAHAWK WIFI", "produttore": "MSI", "prezzo": 210.00, "watts": 25, "garanziaMesi": 36},
+  {"id": 16, "nomeComponente": "Noctua NH-D15", "produttore": "Noctua", "prezzo": 109.90, "watts": 3, "garanziaMesi": 72},
+  {"id": 17, "nomeComponente": "Radeon RX 7600", "produttore": "AMD", "prezzo": 269.00, "watts": 165, "garanziaMesi": 24},
+  {"id": 18, "nomeComponente": "Core i5-13600K", "produttore": "Intel", "prezzo": 320.00, "watts": 181, "garanziaMesi": 36},
+  {"id": 19, "nomeComponente": "Crucial P3 Plus 4TB", "produttore": "Crucial", "prezzo": 240.00, "watts": 6, "garanziaMesi": 60},
+  {"id": 20, "nomeComponente": "Be Quiet! Dark Power 13", "produttore": "Be Quiet!", "prezzo": 259.00, "watts": 1000, "garanziaMesi": 120}
+]
