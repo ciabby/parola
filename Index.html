@@ -87,7 +87,10 @@
                 box-shadow: -5px -5px 20px rgb(243, 212, 246),
                             5px 5px 20px rgb(167, 156, 168);
                 color:black;
-                display: none;
+            }
+            #titolohome:hover
+            {
+                cursor: pointer;
             }
             #titolohome
             {
@@ -95,11 +98,15 @@
                 left: 44%;
                 top: 3%;
                 font-size: 200%;
+                height: 5%;
+                width:13%;
                 background: rgba(150, 210, 223, 0.487);
                 backdrop-filter: blur(16px);
                 box-shadow: -5px -5px 15px rgb(255, 255, 255),
                             5px 5px 15px rgb(167, 156, 168);
                 border-radius: 20px;
+                border: 0.1px solid black;
+                padding-top: 5px;
             }
             #titoloformscelta
             {
@@ -145,6 +152,21 @@
                 margin-bottom: 10px; 
                 word-wrap: break-word; 
             }
+            #lista2
+            {
+                padding-left: 30px; 
+                padding-right: 20px;
+                padding-top: 160px; 
+                font-size: 18px;
+                list-style-position: outside; 
+                color: black;
+                margin: 0;
+            }
+            #lista2 li 
+            {
+                margin-bottom: 10px; 
+                word-wrap: break-word; 
+            }
             #ricercaform 
             {
                 position: absolute;
@@ -184,6 +206,7 @@
                 border-radius: 20px;
                 overflow-y: auto; 
                 overflow-x: hidden; 
+                display: none;
             }
             #testoelimina
             {
@@ -214,19 +237,38 @@
                 font-size: 15px;
                 color: black;
             }
+            button:hover
+            {
+                cursor: pointer;
+            }
+            #bottonemostrae
+            {
+                position: absolute;
+                left: 15%;
+                top: 40%;
+                height: 10%;
+                width: 70%;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                color:black;
+                font-size: 150%;
+            }
         </style>
     </head>
     <body>
-        <h1 id="titolohome">⚙️Componenti⚙️</h1>
+        <h1 id="titolohome" onclick="mostraFormScelta()">🤖Componenti🤖</h1>
         <div id="formscelta">
             <h1 id="titoloformscelta">Cosa Vuoi Fare:</h1>
             <button id="bottonemostrar" onclick="mostraRicerca()">Ricerca Componenti</button>
+            <button id="bottonemostrae" onclick="mostraElimina()">Elimina Componenti</button>
         </div>
         <div id="eliminaform">
             <h1 style="position: absolute;left: 37%; font-size: 150%; top: 1%;">Cancellazione utente</h1>
-            <input type="text" id="testoelimina" placeholder="Ricerca un componente da eliminare     &#128270">
+            <input type="text" id="testoelimina" oninput="aggiornalista2() " placeholder="Ricerca un componente da eliminare     &#128270">
             <br><br>
             <button onclick="eliminaUtente()" id="bottonecancella">Cancella utente</button>
+            <ul id="lista2"></ul>
         </div>
         <div id="ricercaform">
         <h1 style="position: absolute;left: 42%; font-size: 150%; top: 1%;">Ricerca</h1>
@@ -264,11 +306,19 @@
                 document.getElementById("ricercaform").style.display = "inline";
                 document.getElementById("formscelta").style.display = "none";
             }
+            function mostraElimina()
+            {  
+                document.getElementById("eliminaform").style.display = "inline";
+                document.getElementById("formscelta").style.display = "none";
+            }
+            function mostraFormScelta()
+            {
+                document.getElementById("formscelta").style.display = "inline";
+                document.getElementById("ricercaform").style.display = "none";
+                document.getElementById("eliminaform").style.display = "none";
+            }
             const input=document.getElementById("ricerca")
             const lista=document.getElementById("lista")
-            let componenti = [];
-
-            window.onload = inizializzadati();
 
             async function inizializzadati()
             {
@@ -299,6 +349,43 @@
                     }
                 }); 
             }
+
+            const input2=document.getElementById("testoelimina")
+            const lista2=document.getElementById("lista2")
+            let componenti = [];
+
+            async function inizializzadati2()
+            {
+                try 
+                {
+                    const risposta = await fetch("componenti.json");
+                    console.log(risposta.status);
+                    componenti = await risposta.json();
+                    aggiornalista2("");
+                } 
+                catch (errore) 
+                {
+                    console.error("errore di caricamento");
+                }
+            }
+            function aggiornalista2()
+            {
+                var testo = input2.value.toLowerCase();
+                lista2.innerHTML = "";
+                componenti.forEach(componente =>{
+                    const nomecompleto = ""+ componente.nomeComponente +" "+componente.produttore;
+                    const nomeLC = nomecompleto.toLowerCase();
+                    if(nomeLC.includes(testo))
+                    {
+                        const li = document.createElement("li");
+                        li.innerHTML = nomecompleto;
+                        lista2.appendChild(li);
+                    }
+                }); 
+            }
+
+            window.onload = inizializzadati();
+            window.onload = inizializzadati2();
 
         </script>
     </body>
