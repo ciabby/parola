@@ -47,21 +47,6 @@
                 background-position: center; 
                 background-repeat: no-repeat;
             }
-            
-            #formscelta
-            {
-                position: absolute;
-                left: 35%;
-                top: 20%;
-                height: 75%;
-                width: 30%;
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(16px);
-                border-radius: 20px;
-                box-shadow: -5px -5px 20px rgb(243, 212, 246),
-                            5px 5px 20px rgb(167, 156, 168);
-                color:black;
-            }
             #ricerca
             {
                 position: absolute;
@@ -138,6 +123,20 @@
                 overflow-x: hidden; 
                 display: none;
             }
+            #aggiungiform
+            {
+                position: absolute;
+                left: 35%;
+                top: 24%;
+                background: rgba(150, 210, 223, 0.487);
+                backdrop-filter: blur(16px);
+                height: 73%;
+                width: 30%;
+                border-radius: 20px;
+                overflow-y: auto; 
+                overflow-x: hidden; 
+                display: none;
+            }
             #testoelimina
             {
                position: absolute;
@@ -174,8 +173,8 @@
             #pulsanteelimina
             {
                 position: absolute;
-                top: 45%;
-                left: 8%;
+                top: 46.5%;
+                left: 9%;
                 height: 8%;
                 width: 20%;
                 rotate: 5deg;
@@ -188,7 +187,7 @@
             #pulsanteric
             {
                 position: absolute;
-                top: 45%;
+                top: 46.5%;
                 left: 72%;
                 height: 8%;
                 width: 20%;
@@ -199,11 +198,99 @@
                 border: 1px solid white;
                 font-size: 20px;
             }
+            #pulsanteaggiungi
+            {
+                position: absolute;
+                top: 72%;
+                left: 72%;
+                height: 8%;
+                width: 20%;
+                rotate: -1.5deg;
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.16);
+                color: white;
+                border: 1px solid white;
+                font-size: 20px;
+            }
+            #home
+            {
+                position: absolute;
+                top: 0;
+                left: 30%;
+                height: 17%;
+                width: 40%;
+            }
+            #nome
+            {
+                position: absolute;
+                left: 20%;
+                top:20%;
+                height: 7%;
+                width: 60%;
+            }
+            #produttore
+            {
+                position: absolute;
+                left: 20%;
+                top:30%;
+                height: 7%;
+                width: 60%;
+            }
+            #prezzo
+            {
+                position: absolute;
+                left: 20%;
+                top:40%;
+                height: 7%;
+                width: 60%;
+            }
+            #watts
+            {
+                position: absolute;
+                left: 20%;
+                top:50%;
+                height: 7%;
+                width: 60%;
+            }
+            #garanziaMesi
+            {
+                position: absolute;
+                left: 20%;
+                top:60%;
+                height: 7%;
+                width: 60%;
+            }
+            #consegna
+            {
+                position: absolute;
+                left: 40%;
+                top: 80%;
+                height: 7%;
+                width: 20%;
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                color:black;
+            }
+            #titoloformaggiungi
+            {
+                position: absolute;
+                left: 27%;
+                top: 1%;
+                font-size: 150%;
+                color: white;
+            } 
         </style>
     </head>
     <body>
+        <div id="home" onclick="mostraFormScelta()">
+
+        </div>
+        <div id="formscelta">
         <button id="pulsanteric" onclick="mostraRicerca()">Ricerca Un Componente</button>
         <button id="pulsanteelimina" onclick="mostraElimina()">Elimina Un Componente</button>
+        <button id="pulsanteaggiungi" onclick="mostraAggiungi()">Aggiungi Un Componente</button>
+        </div>
         <div id="eliminaform">
             <h1 style="position: absolute;left: 30%; font-size: 150%; top: 1%;">Cancellazione utente</h1>
             <input type="text" id="testoelimina" oninput="aggiornalista2() " placeholder="Ricerca un componente da eliminare     &#128270">
@@ -211,12 +298,28 @@
             <button onclick="eliminaUtente()" id="bottonecancella">Cancella </button>
             <ul id="lista2"></ul>
         </div>
+        <div id="aggiungiform">
+            <input type="text" name="nome" id="nome" required placeholder="Nome Componente">
+            <input type="text" name="produttore" id="produttore" required placeholder="Produttore">
+            <input type="number" name="prezzo" id="prezzo" required placeholder="Prezzo">
+            <input type="number" name="watts" id="watts" required placeholder="Watts">
+            <input type="number" name="garanziaMesi" id="garanziaMesi" required placeholder="Garanzia (mesi)">
+            <input type="submit" id="consegna">
+            <h1 id="titoloformaggiungi">Aggiungi Un Componente</h1>
+        </div>
         <div id="ricercaform">
         <h1 style="position: absolute;left: 42%; font-size: 150%; top: 1%;">Ricerca</h1>
         <input type="text" id="ricerca" placeholder="Ricerca un componente                     &#128270" oninput="aggiornalista()">
         <ul id="lista"></ul>
         </div>
         <script>
+            function mostraAggiungi()
+            {
+                document.getElementsByTagName("body")[0].style.backgroundImage = "url('assets/background/backgroundaggiungi.png')";
+                document.getElementById("aggiungiform").style.display = "inline";
+                document.getElementById("pulsanteric").style.display = "none";
+                document.getElementById("pulsanteelimina").style.display = "none";
+            }
             async function eliminaUtente() {
                 const email = document.getElementById("testoelimina").value.toLowerCase();
 
@@ -248,6 +351,7 @@
                 document.getElementById("ricercaform").style.display = "inline";
                 document.getElementById("pulsanteric").style.display = "none";
                 document.getElementById("pulsanteelimina").style.display = "none";
+                document.getElementById("pulsanteaggiungi").style.display = "none";
             }
             function mostraElimina()
             {  
@@ -255,12 +359,17 @@
                 document.getElementById("eliminaform").style.display = "inline";
                 document.getElementById("pulsanteric").style.display = "none";
                 document.getElementById("pulsanteelimina").style.display = "none";
+                document.getElementById("pulsanteaggiungi").style.display = "none";
             }
             function mostraFormScelta()
             {
-                document.getElementById("formscelta").style.display = "inline";
+                document.getElementsByTagName("body")[0].style.backgroundImage = "url('assets/background/backgroundhome.png')";
+                document.getElementById("pulsanteric").style.display = "inline";
+                document.getElementById("pulsanteelimina").style.display = "inline";
+                document.getElementById("pulsanteaggiungi").style.display = "inline";
                 document.getElementById("ricercaform").style.display = "none";
                 document.getElementById("eliminaform").style.display = "none";
+                document.getElementById("aggiungiform").style.display = "none";
             }
             const input=document.getElementById("ricerca")
             const lista=document.getElementById("lista")
@@ -329,8 +438,32 @@
                 }); 
             }
 
-            window.onload = inizializzadati();
-            window.onload = inizializzadati2();
+            async function aggiungiComponente() {
+                const nomeComponente = document.getElementById("nome").value;
+                const produttore = document.getElementById("produttore").value;
+                const prezzo = document.getElementById("prezzo").value;
+                const watts = document.getElementById("watts").value;
+                const garanziaMesi = document.getElementById("garanziaMesi").value;
+
+                const componente = {nomeComponente,produttore,prezzo,watts,garanziaMesi};
+
+                try {
+                    const risposta = await fetch("creaComponente.php", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(componente)
+                    });
+                    const risultato = await risposta.json();
+                    if(risultato.status === "success") {
+                        alert("Componente inserito con successo!");
+                        location.href = "index.html";
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            window.onload = inizializzadati(),inizializzadati2();
 
         </script>
     </body>
