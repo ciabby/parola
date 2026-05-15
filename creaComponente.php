@@ -9,5 +9,6 @@
         $dati[] = $nuovoComponente;
         file_put_contents($nomeFile, json_encode($dati));
         echo json_encode(["status" => "success"]);
+        echo "eseguito con successo";
     }
 ?>

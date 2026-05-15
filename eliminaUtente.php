@@ -35,5 +35,4 @@
         http_response_code(400);
         echo json_encode(["status" => "error", "message" => "Dati non validi"]);
     }
-
 ?>
