@@ -292,7 +292,7 @@
         <button id="pulsanteaggiungi" onclick="mostraAggiungi()">Aggiungi Un Componente</button>
         </div>
         <div id="eliminaform">
-            <h1 style="position: absolute;left: 30%; font-size: 150%; top: 1%;">Cancellazione utente</h1>
+            <h1 style="position: absolute;left: 30%; font-size: 150%; top: 1%;">Cancellazione componente</h1>
             <input name="nomeComponente" type="text" id="testoelimina" oninput="aggiornalista2() " placeholder="Ricerca un componente da eliminare     &#128270">
             <br><br>
             <button onclick="eliminaUtente()" id="bottonecancella">Cancella </button>
@@ -304,7 +304,7 @@
             <input type="number" name="prezzo" id="prezzo" required placeholder="Prezzo">
             <input type="number" name="watts" id="watts" required placeholder="Watts">
             <input type="number" name="garanziaMesi" id="garanziaMesi" required placeholder="Garanzia (mesi)">
-            <input type="submit" id="consegna">
+            <input type="button" id="consegna" value="Aggiungi" onclick="aggiungiComponente()">
             <h1 id="titoloformaggiungi">Aggiungi Un Componente</h1>
         </div>
         <div id="ricercaform">
@@ -322,9 +322,7 @@
                 document.getElementById("pulsanteaggiungi").style.display = "none";
             }
             async function eliminaUtente() {
-
-                alert("dentro elimina");
-                const email = document.getElementById("testoelimina").value.toLowerCase();
+                const nomeComponente = document.getElementById("testoelimina").value;
 
                 const dati = {nomeComponente: nomeComponente};
 
@@ -336,10 +334,11 @@
                     });
                     const risultato = await risposta.json();
                     if(risposta.status === 200) {
-                        alert("Utente cancellato con successo!");
+                        alert("Componente cancellato con successo!");
+                        location.reload();
                     }
                     else if(risposta.status === 404) {
-                        alert("Utente non trovato!");
+                        alert("Componente non trovato!");
                     }
                     else {
                         alert("Errore del server");
@@ -442,7 +441,6 @@
             }
 
             async function aggiungiComponente() {
-                alert("dentro aggiungi");
                 const nomeComponente = document.getElementById("nome").value;
                 const produttore = document.getElementById("produttore").value;
                 const prezzo = document.getElementById("prezzo").value;
@@ -467,7 +465,10 @@
                 }
             }
 
-            window.onload = inizializzadati(),inizializzadati2();
+            window.onload = () => {
+                inizializzadati();
+                inizializzadati2();
+            };
 
         </script>
     </body>
