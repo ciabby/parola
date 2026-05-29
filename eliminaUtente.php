@@ -14,7 +14,7 @@
             $componenteTrovato = false;
 
             foreach($tuttiIComponenti as $componente) {
-                if($componente['nomeComponente'] !== $nomeDaCancellare)
+                if(strtolower($componente['nomeComponente']) != $nomeDaCancellare)
                     $listaAggiornata[] = $componente;
                 else
                     $componenteTrovato = true;
